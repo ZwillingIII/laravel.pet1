@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-Ты на каталоге
+Ты на каталоге, {{ $name }}
 @endsection

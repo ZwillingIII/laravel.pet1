@@ -18,5 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/catalog', function () {
-    return view('catalog');
+    $data = [
+        'name' => 'Кирилл'
+    ];
+
+    return view('catalog', $data);
 });
