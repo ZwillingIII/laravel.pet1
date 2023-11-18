@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('main', ["key"=>config('app.locale', 'en')]);
+    return view('main', ["key"=>config('app.locale', 'en'), "num"=>app("sub")->sub()]);
 });
 
 // Route::get('/catalog', function () {
