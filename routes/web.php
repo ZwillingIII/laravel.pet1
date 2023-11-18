@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('main', ["key"=>config('app.locale', 'en')]);
 });
 
-Route::get('/catalog', function () {
-    $data = [
-        'name' => 'Кирилл'
-    ];
+// Route::get('/catalog', function () {
+//     $data = [
+//         'name' => 'Кирилл'
+//     ];
 
-    return view('catalog', $data);
-});
+//     return view('catalog', $data);
+// });

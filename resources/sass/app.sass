@@ -1,13 +1,21 @@
+@import fonts.sass
+  
 body
   background-color: #161516
+  margin: 0
+  padding: 0
+  font-family: "Stolzl Regular"
 
 .header
+  &-wrap
+    padding: 40px 60px
   .burger
-    .burger-line
-      height: 11px
-      width: 70px
-      background-color: #fff
-      -webkit-transform: skew(30deg)
-      -moz-transform: skew(30deg)
-      -o-transform: skew(30deg)
-      transform: skew(30deg)
+    display: flex
+    flex-direction: column
+    gap: 8px 0
+    &__frs-line
+      margin-left: 9px
+      transition: all 0.3s
+  .burger:hover
+    .burger__frs-line
+      margin-left: 0
