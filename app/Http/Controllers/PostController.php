@@ -18,8 +18,8 @@ class PostController extends Controller
         return "Запрос создания поста";
     }
 
-    public function show(string|int $code) : string {
-        return "Показать пост {$code}";
+    public function show(string|int $code) : \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory {
+        return view("post", ["code" => $code, "key" => config('app.locale', 'en')]);
     }
 
     public function edit() : string {
