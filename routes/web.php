@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\Posts\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,28 +19,24 @@ use Illuminate\Support\Facades\Route;
 //     return view('main', ["key"=>config('app.locale', 'en'), "num"=>app('sub')->sub()]);
 // });
 
-Route::get("/posts", [PostController::class, "index"])->name("posts.index");
+Route::controller(PostController::class)->group(function() {
+    Route::get("/posts", "index")->name("posts.index");
 
-Route::get("/posts/create", [PostController::class, "create"])->name("posts.create");
+    Route::get("/posts/create", "create")->name("posts.create");
 
-Route::post("/posts", [PostController::class, "store"])->name("posts.store");
+    Route::post("/posts", "store")->name("posts.store");
 
-Route::get("/posts/{post}", [PostController::class, "show"])->name("posts.show");
+    Route::get("/posts/{post}", "show")->name("posts.show");
 
-Route::get("/posts/{post}/edit", [PostController::class, "edit"])->name("posts.edit");
+    Route::get("/posts/{post}/edit", "edit")->name("posts.edit");
 
-Route::put("/posts/{post}", [PostController::class, "update"])->name("posts.update");
+    Route::put("/posts/{post}", "update")->name("posts.update");
 
-Route::delete("posts/{post}", [PostController::class, "delete"])->name("posts.delete");
+    Route::delete("posts/{post}", "delete")->name("posts.delete");
+});
 
-// Route::resource("posts", PostController::class);
+Route::controller(CommentController::class)->group(function() {
+    Route::get("/posts/{post}/comments/{comment}/edit", "edit")->name("comments.edit");
+});
 
 Route::view("/", "main", ["key"=>config('app.locale', 'en'), "num"=>app('sub')->sub()]);
-
-// Route::get('/catalog', function () {
-//     $data = [
-//         'name' => 'Кирилл'
-//     ];
-
-//     return view('catalog', $data);
-// });
