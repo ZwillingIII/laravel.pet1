@@ -1,3 +1,0 @@
-<div>
-    Ahtung
-</div>

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-Каталог
-@endsection
+@section('title', "Каталог")
 
 @section('content')
 Ты на каталоге, {{ $name }}

@@ -8,7 +8,6 @@
 </head>
 <body>
   @include('components.header')
-  <input type="text" value="{{ $num }}">
   <!-- @yield('content') -->
   <!-- @include('components.header') -->
 </body>

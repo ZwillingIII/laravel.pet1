@@ -14,3 +14,5 @@
 
   </div>
 </div>
+
+<a href="{{ route("posts.show", "test") }}" style="color: #fff">Test</a>

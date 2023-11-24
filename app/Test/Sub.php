@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace App\Test;
 
@@ -10,6 +10,6 @@ class Sub {
   }
 
   public function sub() {
-    return $this->num+5;
+    return intval($this->num)+5;
   }
 }
