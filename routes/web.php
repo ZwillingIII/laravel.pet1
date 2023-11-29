@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Posts\CommentController;
+use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('main', ["key"=>config('app.locale', 'en'), "num"=>app('sub')->sub()]);
 // });
 
+Route::redirect("/home", '/');
+
 Route::controller(PostController::class)->group(function() {
     Route::get("/posts", "index")->name("posts.index");
 
@@ -35,8 +38,13 @@ Route::controller(PostController::class)->group(function() {
     Route::delete("posts/{post}", "delete")->name("posts.delete");
 });
 
+
+
 Route::controller(CommentController::class)->group(function() {
     Route::get("/posts/{post}/comments/{comment}/edit", "edit")->name("comments.edit");
 });
 
 Route::view("/", "main", ["key"=>config('app.locale', 'en'), "num"=>app('sub')->sub()]);
+
+
+// Route::post("/posts/{post}", [PostRequest::class, "edit"])->name("posts.edit");

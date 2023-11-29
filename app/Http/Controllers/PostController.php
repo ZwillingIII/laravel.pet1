@@ -22,8 +22,10 @@ class PostController extends Controller
         return view("post", ["code" => $code, "key" => config('app.locale', 'en')]);
     }
 
-    public function edit() : string {
-        return "Изменение поста";
+    public function edit($post) : array {
+        return [
+            "status" => 200
+        ];
     }
 
     public function update() : string {

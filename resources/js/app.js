@@ -1,10 +1,9 @@
 // import './bootstrap';
 
 // ! TODO: более 1000 запросов за раз
-function fetch(action, method, form) {
+function fetchFunc(action, method) {
   return fetch(action, {
     method: method,
-    // body: new FormData(form),
   })
   .then((data) => {
     console.log(data);
@@ -19,7 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const postEditForm = document.querySelector('#edit-post');
   postEditForm.addEventListener("submit", function(e) {
     e.preventDefault();
+
+    const formData = new FormData(postEditForm);
+    const data = {
+      "name": formData.get('name'),
+      "_token": formData.get('_token')
+    }
+
+    // console.log(e.target.action, e.target.method, data);
+
+    const action = e.target.action + `?name=${data.name}`;
   
-    fetch(e.target.action, e.target.method, postEditForm);
+    fetchFunc(action, e.target.method);
   });
 });
