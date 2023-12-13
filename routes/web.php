@@ -5,9 +5,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\Posts\CommentController;
 use Illuminate\Support\Facades\Route;
 
-// Middleware
-use App\Http\Middleware\LogMiddleware;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +32,7 @@ Route::controller(PostController::class)->group(function() {
 
     Route::get("/posts/{post}", "show")->name("posts.show");
 
-    Route::get("/posts/{post}/edit", "edit")->name("posts.edit")->middleware(LogMiddleware::class);
+    Route::get("/posts/{post}/edit", "edit")->name("posts.edit")->middleware("token");
 
     Route::put("/posts/{post}", "update")->name("posts.update");
 

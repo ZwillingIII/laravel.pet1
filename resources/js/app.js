@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   postEditForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const data = new FormData(postEditForm);
-    const action = e.target.action + `?name=${data.get("name")}`;
+    const action = e.target.action + `?name=${data.get("name")}&token=${data.get("token")}`;
 
     return axios.get(action);
   });

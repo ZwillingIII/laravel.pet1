@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LogMiddleware
+class TokenMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,20 @@ class LogMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        info("Edit post", [
-            "url" => $request->url(),
-            "data" => $request->all(),
-        ]); // запись лога
+//				dd($request);
 
-        return $next($request);
+        $token = config("test.token");
+
+        if ($request->input("token") == $token) {
+            return $next($request);
+        }
+
+        info("Error request: ", [
+					"code" => 400,
+					"message" => "Неверный токен и твоя жизнь",
+					"return" => false,
+				]);
+
+				abort(400);
     }
 }
