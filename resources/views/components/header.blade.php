@@ -10,7 +10,9 @@
       </svg>
     </div>
 
-    
+		<div style="color: #FFF">
+			{{ $date }}
+		</div>
 
   </div>
 </div>
