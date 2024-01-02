@@ -11,7 +11,10 @@ class PostController extends Controller
     }
 
     public function create() : string {
-        return "Страница создания поста";
+        return [
+					"status" => 200,
+	        "message" => "Данные получены"
+        ];
     }
 
     public function store() : string {
