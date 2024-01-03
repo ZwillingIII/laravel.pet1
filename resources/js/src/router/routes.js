@@ -4,7 +4,7 @@ import Name from "@/src/pages/Name.vue";
 
 const routes = [
 	{
-		path: '/vue',
+		path: '/vue/:id?',
 		component: Home,
 	},
 	{

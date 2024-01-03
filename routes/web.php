@@ -50,6 +50,7 @@ Route::view("/", "main", ["key"=>config('app.locale', 'en'), "num"=>app('sub')->
 Route::view("/vue", "vue");
 Route::view("/vue-about", "vue");
 Route::view("/vue-name", "vue");
+Route::view("/vue/{id}", "vue");
 
 
 // Route::post("/posts/{post}", [PostRequest::class, "edit"])->name("posts.edit");

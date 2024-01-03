@@ -10,7 +10,7 @@ class PostController extends Controller
         return "Страница списка постов";
     }
 
-    public function create() : string {
+    public function create() : array {
         return [
 					"status" => 200,
 	        "message" => "Данные получены"
@@ -27,7 +27,8 @@ class PostController extends Controller
 
     public function edit($post) : array {
         return [
-            "status" => 200
+            "status" => 200,
+	          "message" => "edit {$post}",
         ];
     }
 

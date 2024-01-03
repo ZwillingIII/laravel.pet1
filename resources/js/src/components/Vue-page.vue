@@ -2,6 +2,9 @@
 	<button @click="testClick" class="btn-name">
 		Hello, {{ name }}
 	</button>
+	<div v-if="boolAxios">
+		{{ successAxiosMessage }}
+	</div>
 </template>
 
 <script>
@@ -11,14 +14,29 @@ export default {
 	name: "App",
 	data() {
 		return {
-			name: "Кирилл"
+			name: "Кирилл",
+			boolAxios: false,
+			errorAxios: "",
+			successAxiosMessage: "",
 		}
 	},
 	methods: {
 		testClick() {
-			this.name = "Кирюха";
-			// axios.get("/posts/create");
+			axios.get("/posts/create")
+				.then((data) => {
+					this.boolAxios = true;
+					this.successAxiosMessage = data.data.message;
+				})
+				.catch((err) => {
+					this.errorAxios = err;
+				});
 		}
+	},
+	updated() {
+		console.log("params: ", this.$route.params.id);
+	},
+	mounted() {
+		console.log("params: ", this.$route.params.id);
 	}
 }
 </script>
